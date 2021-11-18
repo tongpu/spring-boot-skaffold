@@ -1,0 +1,17 @@
+apiVersion: skaffold/v2beta7
+kind: Config
+
+metadata:
+  name: hello-world
+
+build:
+  artifacts:
+  - image: hello-world
+    buildpacks:
+      builder: gcr.io/buildpacks/builder:v1
+    context: hello-world
+  - image: sidecar
+    context: sidecar
+
+deploy:
+  kubectl: {}
